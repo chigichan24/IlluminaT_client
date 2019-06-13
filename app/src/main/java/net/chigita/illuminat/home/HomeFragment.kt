@@ -31,10 +31,10 @@ class HomeFragment : Fragment(), Injectable {
     return binding.root
   }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-      super.onActivityCreated(savedInstanceState)
-      binding.lottieLight.setOnClickListener {
-        binding.lottieLight.playAnimation()
-      }
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    binding.lottieLight.setOnClickListener {
+      binding.lottieLight.playAnimation()
     }
+  }
 }
