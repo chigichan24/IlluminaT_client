@@ -6,6 +6,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <ImageView
+      android:id="@+id/logo"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      android:src="@drawable/logo"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/register_button"
+      style="@style/Widget.MaterialComponents.Button"
+      android:layout_width="224dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="32dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="16dp"
+      android:paddingBottom="32dp"
+      android:paddingTop="32dp"
+      android:text="@string/register_pattern"
+      android:textColor="@color/white_smoke"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/center_vertical_guideline"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/reflect_button"
+      style="@style/Widget.MaterialComponents.Button"
+      android:layout_width="224dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="32dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="8dp"
+      android:paddingBottom="32dp"
+      android:paddingTop="32dp"
+      android:text="@string/reflect_pattern"
+      android:textColor="@color/white_smoke"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/center_vertical_guideline"
+      />
+    <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/center_vertical_guideline"
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintGuide_percent="0.5"
+      />
+
     <com.airbnb.lottie.LottieAnimationView
       android:id="@+id/lottie_light"
       android:layout_width="wrap_content"
@@ -18,56 +68,6 @@
       app:lottie_autoPlay="true"
       app:lottie_loop="false"
       app:lottie_rawRes="@raw/light_bulb"
-      />
-    <ImageView
-      android:id="@+id/logo"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
-      android:src="@drawable/logo"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      />
-    <androidx.constraintlayout.widget.Guideline
-      android:id="@+id/center_vertical_guideline"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      app:layout_constraintGuide_percent="0.5"
-      />
-    <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/register_button"
-      style="@style/Widget.MaterialComponents.Button"
-      android:layout_width="224dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="8dp"
-      android:layout_marginBottom="32dp"
-      android:paddingTop="32dp"
-      android:paddingBottom="32dp"
-      android:text="@string/register_pattern"
-      android:textColor="@color/white_smoke"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/center_vertical_guideline"
-      app:layout_constraintStart_toStartOf="parent"
-      />
-
-    <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/reflect_button"
-      style="@style/Widget.MaterialComponents.Button"
-      android:layout_width="224dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:layout_marginEnd="16dp"
-      android:layout_marginBottom="32dp"
-      android:paddingTop="32dp"
-      android:paddingBottom="32dp"
-      android:text="@string/reflect_pattern"
-      android:textColor="@color/white_smoke"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/center_vertical_guideline"
       />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
