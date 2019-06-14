@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import net.chigita.illuminat.R
 import net.chigita.illuminat.databinding.FragmentHomeBinding
 import net.chigita.illuminat.di.Injectable
@@ -36,5 +37,10 @@ class HomeFragment : Fragment(), Injectable {
     binding.lottieLight.setOnClickListener {
       binding.lottieLight.playAnimation()
     }
+
+    binding.registerButton.setOnClickListener { navigateToRegisterPattern() }
   }
+
+  private fun navigateToRegisterPattern() = findNavController().navigate(
+      R.id.action_home_to_register)
 }

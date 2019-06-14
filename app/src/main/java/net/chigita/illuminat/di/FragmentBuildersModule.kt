@@ -3,6 +3,7 @@ package net.chigita.illuminat.di
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.chigita.illuminat.home.HomeFragment
+import net.chigita.illuminat.register.RegisterPatternFragment
 
 /**
  * Created by chigichan24 on 2019-06-12.
@@ -11,4 +12,7 @@ import net.chigita.illuminat.home.HomeFragment
 abstract class FragmentBuildersModule {
   @ContributesAndroidInjector
   abstract fun contribubteHomeFragment(): HomeFragment
+
+  @ContributesAndroidInjector
+  abstract fun contriubteRegisterPatterbFragment(): RegisterPatternFragment
 }
