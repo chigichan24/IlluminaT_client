@@ -3,4 +3,7 @@
 
   <string name="register_pattern">パターンを登録する</string>
   <string name="reflect_pattern">パターンを反映する</string>
+  <string name="display_pattern_name">表示するパターン</string>
+  <string name="display_pattern_regulation_hint">表示する文字はひらがな・アルファベット・8文字以下を推奨します．</string>
+  <string name="register">登録</string>
 </resources>
