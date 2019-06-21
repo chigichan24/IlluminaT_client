@@ -49,8 +49,13 @@ class RegisterPatternFragment : Fragment(), Injectable {
         navigateToHome()
       }
     }
+    binding.colorPickerView.showAlpha(false)
     binding.registerPatternButton.setOnClickListener {
-      registerPatternViewModel.registerPattern(binding.patternEditText.text.toString())
+      val color = binding.colorPickerView.color
+      registerPatternViewModel.registerPattern(
+          binding.patternEditText.text.toString(),
+          color
+      )
     }
   }
 

@@ -19,19 +19,25 @@ data class Color(
     @PrimaryKey val uuid: String,
     val patternUuid: String,
     val index: Int,
-    val color: String
+    val red: Int,
+    val green: Int,
+    val blue: Int
 ) {
   companion object {
     fun new(
         patternUuid: String,
         index: Int,
-        color: String?
+        red: Int,
+        green: Int,
+        blue: Int
     ): Color {
       return Color(
           UUID.randomUUID().toString(),
           patternUuid,
           index,
-          color ?: "FFFFFF"
+          red,
+          green,
+          blue
       )
     }
   }

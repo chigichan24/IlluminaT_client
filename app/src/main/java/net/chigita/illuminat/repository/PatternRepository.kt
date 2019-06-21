@@ -12,8 +12,9 @@ import javax.inject.Singleton
 class PatternRepository @Inject constructor(
     private val patternDao: PatternDao
 ) {
-  suspend fun insert(pattern: Pattern) {
+  suspend fun insert(pattern: Pattern): Pattern {
     patternDao.insert(pattern)
+    return pattern
   }
 
   suspend fun load(uuid: String): Pattern {
