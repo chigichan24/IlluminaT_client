@@ -30,7 +30,7 @@
       app:layout_constraintTop_toBottomOf="@id/toolbar"
       />
     <EditText
-      android:id="@+id/pattern_hint"
+      android:id="@+id/pattern_edit_text"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
@@ -52,7 +52,7 @@
       app:layout_constraintBottom_toTopOf="@id/register_pattern_button"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/pattern_hint"
+      app:layout_constraintTop_toBottomOf="@id/pattern_edit_text"
       />
     <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/register_pattern_button"

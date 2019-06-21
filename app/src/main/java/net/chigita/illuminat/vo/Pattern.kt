@@ -2,7 +2,6 @@ package net.chigita.illuminat.vo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.lang.IllegalStateException
 import java.util.UUID
 
 @Entity
