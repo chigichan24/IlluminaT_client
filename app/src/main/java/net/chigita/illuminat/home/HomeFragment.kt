@@ -16,7 +16,6 @@ import net.chigita.illuminat.di.Injectable
  */
 class HomeFragment : Fragment(), Injectable {
   private lateinit var binding: FragmentHomeBinding
-  //@Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
   override fun onCreateView(
       inflater: LayoutInflater,
@@ -39,8 +38,11 @@ class HomeFragment : Fragment(), Injectable {
     }
 
     binding.registerButton.setOnClickListener { navigateToRegisterPattern() }
+    binding.reflectButton.setOnClickListener { navigateToAookyPattern() }
   }
 
   private fun navigateToRegisterPattern() = findNavController().navigate(
       R.id.action_home_to_register)
+
+  private fun navigateToAookyPattern() = findNavController().navigate(R.id.action_home_to_apply)
 }

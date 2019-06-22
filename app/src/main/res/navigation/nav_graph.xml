@@ -19,6 +19,15 @@
       app:popEnterAnim="@anim/nav_enter_from_bottom"
       app:popExitAnim="@anim/nav_exit_to_bottom"
       />
+
+    <action
+      android:id="@+id/action_home_to_apply"
+      app:destination="@+id/navigation_apply_pattern"
+      app:enterAnim="@anim/nav_enter_from_bottom"
+      app:exitAnim="@anim/nav_exit_to_bottom"
+      app:popEnterAnim="@anim/nav_enter_from_bottom"
+      app:popExitAnim="@anim/nav_exit_to_bottom"
+      />
   </fragment>
 
   <fragment
@@ -26,5 +35,12 @@
     android:name="net.chigita.illuminat.register.RegisterPatternFragment"
     android:label="registe"
     tools:layout="@layout/fragment_register_pattaern"
+    />
+
+  <fragment
+    android:id="@+id/navigation_apply_pattern"
+    android:name="net.chigita.illuminat.apply.ApplyPAtternFragment"
+    android:label="apply"
+    tools:layout="@layout/fragment_apply_pattern"
     />
 </navigation>
