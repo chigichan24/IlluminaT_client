@@ -2,7 +2,7 @@ package net.chigita.illuminat.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.chigita.illuminat.apply.ApplyPAtternFragment
+import net.chigita.illuminat.apply.ApplyPatternFragment
 import net.chigita.illuminat.home.HomeFragment
 import net.chigita.illuminat.register.RegisterPatternFragment
 
@@ -18,5 +18,5 @@ abstract class FragmentBuildersModule {
   abstract fun contriubteRegisterPatterbFragment(): RegisterPatternFragment
 
   @ContributesAndroidInjector
-  abstract fun contributeApplyPatternFragment(): ApplyPAtternFragment
+  abstract fun contributeApplyPatternFragment(): ApplyPatternFragment
 }

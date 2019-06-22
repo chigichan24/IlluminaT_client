@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import net.chigita.illuminat.apply.ApplyPatternViewModel
 import net.chigita.illuminat.register.RegisterPatternViewModel
 
 /**
@@ -19,4 +20,9 @@ abstract class ViewModelModule {
   @IntoMap
   @ViewModelKey(RegisterPatternViewModel::class)
   abstract fun bindRegisterPatternViewModel(viewModel: RegisterPatternViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(ApplyPatternViewModel::class)
+  abstract fun bindApplyPatternViewModel(viewModel: ApplyPatternViewModel): ViewModel
 }

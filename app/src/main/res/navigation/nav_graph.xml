@@ -39,7 +39,7 @@
 
   <fragment
     android:id="@+id/navigation_apply_pattern"
-    android:name="net.chigita.illuminat.apply.ApplyPAtternFragment"
+    android:name="net.chigita.illuminat.apply.ApplyPatternFragment"
     android:label="apply"
     tools:layout="@layout/fragment_apply_pattern"
     />
