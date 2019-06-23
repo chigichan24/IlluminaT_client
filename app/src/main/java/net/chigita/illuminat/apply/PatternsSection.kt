@@ -1,13 +1,16 @@
 package net.chigita.illuminat.apply
 
+import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.xwray.groupie.Group
 import com.xwray.groupie.Section
+import net.chigita.illuminat.R
+import net.chigita.illuminat.util.changed
 import net.chigita.illuminat.vo.PatternWithColor
 
 class PatternsSection(
-    private val title: String,
-    private val patterns: List<PatternWithColor>?,
+    private val context: Context,
+    private val applyPatternViewModel: ApplyPatternViewModel,
     private val lifecycleOwner: LifecycleOwner,
     private val onItemClick: (PatternWithColor) -> Unit
 ) : Section() {
@@ -18,13 +21,21 @@ class PatternsSection(
   }
 
   init {
-    patterns?.let { reload(it) }
+    applyPatternViewModel.patternsLiveData.changed(lifecycleOwner) {
+      reload()
+    }
+    applyPatternViewModel.currentPatternLiveData.changed(lifecycleOwner) {
+      reload()
+    }
   }
 
-  fun reload(patterns: List<PatternWithColor>) {
+  fun reload(){
     val items = mutableListOf<Group>()
-    items.add(TitleItem(title))
-    patterns.forEach {
+    items.add(TitleItem(context.getString(R.string.displayed_pattern)))
+    val current = applyPatternViewModel.currentPatternLiveData.value
+    current?.let {items.add(PatternItem(it, onPatternItemClickListener))}
+    items.add(TitleItem(context.getString(R.string.registered_patterns)))
+    applyPatternViewModel.patternsLiveData.value?.forEach {
       items.add(PatternItem(it, onPatternItemClickListener))
     }
     update(items)

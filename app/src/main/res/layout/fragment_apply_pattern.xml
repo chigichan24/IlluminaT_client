@@ -19,24 +19,14 @@
       app:titleTextColor="@color/antique_white"
       />
     <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view_current_pattern"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      app:layout_constraintBottom_toTopOf="@id/recycler_view_registered_pattern"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/toolbar"
-      />
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view_registered_pattern"
+      android:id="@+id/recycler_view"
       android:layout_width="0dp"
       android:layout_height="0dp"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/recycler_view_current_pattern"
+      app:layout_constraintTop_toBottomOf="@id/toolbar"
       />
 
   </androidx.constraintlayout.widget.ConstraintLayout>

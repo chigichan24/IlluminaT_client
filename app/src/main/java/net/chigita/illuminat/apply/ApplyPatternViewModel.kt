@@ -61,10 +61,12 @@ class ApplyPatternViewModel @Inject constructor(
     mutablePatternsStateLiveData.value = PatternsState.LOADING
     viewModelScope.launch {
       try {
-        val patterns = patternRepository.loadAll()
-        val result = patterns.map {
-          val colors = colorRepository.loadWithPatternUuid(it.uuid)
-          PatternWithColor.load(it, colors)
+        val result = withContext(Dispatchers.IO) {
+          val patterns = patternRepository.loadAll()
+          patterns.map {
+            val colors = colorRepository.loadWithPatternUuid(it.uuid)
+            PatternWithColor.load(it, colors)
+          }
         }
         mutablePatternsLiveData.value = result
         mutablePatternsStateLiveData.value = PatternsState.FINISHED

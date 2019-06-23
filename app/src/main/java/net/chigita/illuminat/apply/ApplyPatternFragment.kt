@@ -1,7 +1,6 @@
 package net.chigita.illuminat.apply
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +13,6 @@ import com.xwray.groupie.ViewHolder
 import net.chigita.illuminat.R
 import net.chigita.illuminat.databinding.FragmentApplyPatternBinding
 import net.chigita.illuminat.di.Injectable
-import net.chigita.illuminat.util.changed
-import net.chigita.illuminat.vo.PatternWithColor
 import javax.inject.Inject
 
 /**
@@ -45,35 +42,15 @@ class ApplyPatternFragment : Fragment(), Injectable {
     applyPatternViewModel = ViewModelProviders.of(this, viewModelFactory)
         .get(ApplyPatternViewModel::class.java)
     applyPatternViewModel.getPatterns()
-    applyPatternViewModel.patternsLiveData.changed(viewLifecycleOwner) {
-      binding.recyclerViewRegisteredPattern.adapter = GroupAdapter<ViewHolder>().apply {
-        add(
-            PatternsSection(
-                requireContext().getString(R.string.registered_patterns),
-                it,
-                viewLifecycleOwner
-            ) { Unit }
-        )
-      }
-    }
-
     applyPatternViewModel.getCurrentPattern()
-    applyPatternViewModel.currentPatternStateLiveData.changed(viewLifecycleOwner) {
-      Log.d("state", it.name)
-      if (it == CurrentPatternState.CANCELED) {
-
-      }
-    }
-    applyPatternViewModel.currentPatternLiveData.changed(viewLifecycleOwner) {
-      binding.recyclerViewCurrentPattern.adapter = GroupAdapter<ViewHolder>().apply {
-        add(
-            PatternsSection(
-                requireContext().getString(R.string.displayed_pattern),
-                listOf(it),
-                viewLifecycleOwner
-            ) { Unit }
-        )
-      }
+    binding.recyclerView.adapter = GroupAdapter<ViewHolder>().apply {
+      add(
+          PatternsSection(
+              requireContext(),
+              applyPatternViewModel,
+              viewLifecycleOwner
+          ) { Unit }
+      )
     }
   }
 }
