@@ -1,10 +1,13 @@
 package net.chigita.illuminat.apply
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -49,7 +52,14 @@ class ApplyPatternFragment : Fragment(), Injectable {
               requireContext(),
               applyPatternViewModel,
               viewLifecycleOwner
-          ) { Unit }
+          ) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.confirmation)
+                .setMessage(R.string.apply_pattern_message)
+                .setPositiveButton(R.string.ok, null)
+                .setNegativeButton(R.string.cancel, null)
+                .show()
+          }
       )
     }
   }

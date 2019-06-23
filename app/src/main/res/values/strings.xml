@@ -8,4 +8,8 @@
   <string name="register">登録</string>
   <string name="registered_patterns">登録されたパターン一覧</string>
   <string name="displayed_pattern">反映中のパターン</string>
+  <string name="confirmation">確認</string>
+  <string name="apply_pattern_message">パターンを反映してもよろしいですか？</string>
+  <string name="ok">OK</string>
+  <string name="cancel">Cancel</string>
 </resources>

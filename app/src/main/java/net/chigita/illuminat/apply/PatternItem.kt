@@ -15,7 +15,7 @@ class PatternItem(
   override fun bind(viewBinding: ItemPatternBinding, position: Int) {
     viewBinding.text.text = pattern.displayName
     viewBinding.cardView.setOnClickListener {
-      onPatternItemClickListener
+      onPatternItemClickListener.onClick(pattern)
     }
   }
 
