@@ -17,4 +17,7 @@ interface PatternDao {
 
   @Query("SELECT * FROM pattern WHERE uuid = :uuid")
   suspend fun find(uuid: String): Pattern
+
+  @Query("SELECT * FROM pattern WHERE registeredId = :registeredId")
+  suspend fun findWithRegisteredId(registeredId: Int): Pattern
 }
