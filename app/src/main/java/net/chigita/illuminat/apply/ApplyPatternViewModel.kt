@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import net.chigita.illuminat.repository.ColorRepository
 import net.chigita.illuminat.repository.PatternRepository
 import net.chigita.illuminat.util.onError
@@ -40,14 +41,17 @@ class ApplyPatternViewModel @Inject constructor(
 
   fun getCurrentPattern() {
     mutableCurrentPatternStateLiveData.value = CurrentPatternState.LOADING
-    viewModelScope.launch(Dispatchers.IO) {
+    viewModelScope.launch {
       try {
-        val pattern = patternRepository.loadCurrentPattern()
-        val colors = colorRepository.loadWithPatternUuid(pattern.uuid)
+        val pattern = withContext(Dispatchers.IO) {
+          patternRepository.loadCurrentPattern()
+        }
+        val colors = withContext(Dispatchers.IO) {
+          colorRepository.loadWithPatternUuid(pattern.uuid)
+        }
         mutableCurrentPatternLiveData.value = PatternWithColor.load(pattern, colors)
         mutableCurrentPatternStateLiveData.value = CurrentPatternState.FINISHED
       } catch (e: Exception) {
-        onError(app.applicationContext, e)
         mutableCurrentPatternStateLiveData.value = CurrentPatternState.CANCELED
       }
     }

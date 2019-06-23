@@ -6,4 +6,6 @@
   <string name="display_pattern_name">表示するパターン</string>
   <string name="display_pattern_regulation_hint">表示する文字はひらがな・アルファベット・8文字以下を推奨します．</string>
   <string name="register">登録</string>
+  <string name="registered_patterns">登録されたパターン一覧</string>
+  <string name="displayed_pattern">反映中のパターン</string>
 </resources>

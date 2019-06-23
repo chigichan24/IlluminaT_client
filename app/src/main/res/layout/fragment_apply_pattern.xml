@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/reflect_pattern"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      />
     <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
       style="@style/Theme.AppCompat.Light.DarkActionBar"
@@ -28,14 +19,24 @@
       app:titleTextColor="@color/antique_white"
       />
     <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view"
+      android:id="@+id/recycler_view_current_pattern"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toTopOf="@id/recycler_view_registered_pattern"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/toolbar"
+      />
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recycler_view_registered_pattern"
       android:layout_width="0dp"
       android:layout_height="0dp"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/toolbar"
+      app:layout_constraintTop_toBottomOf="@id/recycler_view_current_pattern"
       />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
