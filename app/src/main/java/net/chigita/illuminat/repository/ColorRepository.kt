@@ -19,4 +19,8 @@ class ColorRepository @Inject constructor(
   suspend fun load(uuid: String): Color {
     return colorDao.find(uuid)
   }
+
+  suspend fun loadWithPatternUuid(patternUuid: String): List<Color> {
+    return colorDao.findColors(patternUuid)
+  }
 }

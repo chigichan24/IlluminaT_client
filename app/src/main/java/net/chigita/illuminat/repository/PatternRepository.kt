@@ -27,4 +27,8 @@ class PatternRepository @Inject constructor(
   suspend fun load(uuid: String): Pattern {
     return patternDao.find(uuid)
   }
+
+  suspend fun loadAll(): List<Pattern> {
+    return patternDao.findAll()
+  }
 }

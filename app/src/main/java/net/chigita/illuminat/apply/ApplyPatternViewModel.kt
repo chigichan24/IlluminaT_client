@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import net.chigita.illuminat.repository.ColorRepository
 import net.chigita.illuminat.repository.PatternRepository
 import net.chigita.illuminat.util.onError
-import net.chigita.illuminat.vo.Pattern
+import net.chigita.illuminat.vo.PatternWithColor
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -20,8 +20,8 @@ class ApplyPatternViewModel @Inject constructor(
     private val colorRepository: ColorRepository
 ) : AndroidViewModel(app) {
 
-  private val mutableCurrentPatternLiveData = MutableLiveData<Pattern>()
-  val currentPatternLiveData: LiveData<Pattern>
+  private val mutableCurrentPatternLiveData = MutableLiveData<PatternWithColor>()
+  val currentPatternLiveData: LiveData<PatternWithColor>
     get() = mutableCurrentPatternLiveData
   private val mutableCurrentPatternStateLiveData = MutableLiveData<CurrentPatternState>().apply {
     value = CurrentPatternState.INITIALIZED
@@ -29,18 +29,45 @@ class ApplyPatternViewModel @Inject constructor(
   val currentPatternStateLiveData: LiveData<CurrentPatternState>
     get() = mutableCurrentPatternStateLiveData
 
+  private val mutablePatternsLiveData = MutableLiveData<List<PatternWithColor>>()
+  val patternsLiveData: LiveData<List<PatternWithColor>>
+    get() = mutablePatternsLiveData
+  private val mutablePatternsStateLiveData = MutableLiveData<PatternsState>().apply {
+    value = PatternsState.INITIALIZED
+  }
+  val patternsStateLiveData: LiveData<PatternsState>
+    get() = mutablePatternsStateLiveData
+
   fun getCurrentPattern() {
     mutableCurrentPatternStateLiveData.value = CurrentPatternState.LOADING
     viewModelScope.launch(Dispatchers.IO) {
       try {
         val pattern = patternRepository.loadCurrentPattern()
-        mutableCurrentPatternLiveData.value = pattern
+        val colors = colorRepository.loadWithPatternUuid(pattern.uuid)
+        mutableCurrentPatternLiveData.value = PatternWithColor.load(pattern, colors)
         mutableCurrentPatternStateLiveData.value = CurrentPatternState.FINISHED
       } catch (e: Exception) {
         onError(app.applicationContext, e)
         mutableCurrentPatternStateLiveData.value = CurrentPatternState.CANCELED
       }
     }
+  }
 
+  fun getPatterns() {
+    mutablePatternsStateLiveData.value = PatternsState.LOADING
+    viewModelScope.launch {
+      try {
+        val patterns = patternRepository.loadAll()
+        val result = patterns.map {
+          val colors = colorRepository.loadWithPatternUuid(it.uuid)
+          PatternWithColor.load(it, colors)
+        }
+        mutablePatternsLiveData.value = result
+        mutablePatternsStateLiveData.value = PatternsState.FINISHED
+      } catch (e: Exception) {
+        onError(app.applicationContext, e)
+        mutablePatternsStateLiveData.value = PatternsState.CANCELED
+      }
+    }
   }
 }
