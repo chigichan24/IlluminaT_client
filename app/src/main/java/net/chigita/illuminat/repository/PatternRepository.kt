@@ -28,6 +28,9 @@ class PatternRepository @Inject constructor(
 
   suspend fun loadCurrentPattern(): Pattern {
     val id = illuminatService.getCurrentPattern().id
+    if (id == 0) {
+      return Pattern.EMPTY
+    }
     return patternDao.findWithRegisteredId(id)
   }
 

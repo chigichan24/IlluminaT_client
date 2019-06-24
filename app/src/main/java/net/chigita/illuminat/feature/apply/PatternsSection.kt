@@ -1,7 +1,6 @@
 package net.chigita.illuminat.feature.apply
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.xwray.groupie.Group
 import com.xwray.groupie.Section
@@ -25,17 +24,22 @@ class PatternsSection(
     applyPatternViewModel.patternsLiveData.changed(lifecycleOwner) {
       reload()
     }
-    applyPatternViewModel.currentPatternLiveData.changed(lifecycleOwner) {
-      Log.d("debug", it.toString())
-      reload()
+    applyPatternViewModel.currentPatternStateLiveData.changed(lifecycleOwner) {
+      if (it == CurrentPatternState.CANCELED) {
+        reload(false)
+      } else {
+        reload()
+      }
     }
   }
 
-  fun reload(){
+  fun reload(isExistCurrentPattern: Boolean = true){
     val items = mutableListOf<Group>()
     items.add(TitleItem(context.getString(R.string.displayed_pattern)))
     val current = applyPatternViewModel.currentPatternLiveData.value
-    current?.let {items.add(PatternItem(it, onPatternItemClickListener))}
+    if (isExistCurrentPattern) {
+      current?.let {items.add(PatternItem(it, onPatternItemClickListener))}
+    }
     items.add(TitleItem(context.getString(R.string.registered_patterns)))
     applyPatternViewModel.patternsLiveData.value?.forEach {
       items.add(PatternItem(it, onPatternItemClickListener))

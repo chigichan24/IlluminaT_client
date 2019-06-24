@@ -46,6 +46,9 @@ class ApplyPatternViewModel @Inject constructor(
         val pattern = withContext(Dispatchers.IO) {
           patternRepository.loadCurrentPattern()
         }
+        if (pattern == Pattern.EMPTY) {
+          throw IllegalStateException("pattern not showing now")
+        }
         val colors = withContext(Dispatchers.IO) {
           colorRepository.loadWithPatternUuid(pattern.uuid)
         }
@@ -95,6 +98,7 @@ class ApplyPatternViewModel @Inject constructor(
             patternRepository.reflect(pattern.registeredId)
           }
         }
+        getCurrentPattern()
       } catch (e: Exception) {
         onError(app.applicationContext, e)
       }
@@ -107,6 +111,7 @@ class ApplyPatternViewModel @Inject constructor(
         withContext(Dispatchers.IO) {
           patternRepository.stop()
         }
+        getCurrentPattern()
       } catch (e: Exception) {
         onError(app.applicationContext, e)
       }
