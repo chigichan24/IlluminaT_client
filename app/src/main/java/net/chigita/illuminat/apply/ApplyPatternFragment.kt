@@ -60,6 +60,7 @@ class ApplyPatternFragment : Fragment(), Injectable {
                 .setPositiveButton(R.string.ok
                 ) { _, _ ->
                   applyPatternViewModel.applyPattern(it)
+                  applyPatternViewModel.getCurrentPattern()
                 }
                 .setNegativeButton(R.string.cancel, null)
                 .show()
