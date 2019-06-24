@@ -1,5 +1,6 @@
 package net.chigita.illuminat.repository
 
+import android.util.Log
 import net.chigita.illuminat.api.IlluminatService
 import net.chigita.illuminat.api.request.IdRequest
 import net.chigita.illuminat.api.request.PatternRequest
@@ -12,6 +13,8 @@ import net.chigita.illuminat.vo.Pattern
 import net.chigita.illuminat.vo.PatternWithColor
 import javax.inject.Inject
 import javax.inject.Singleton
+
+
 
 /**
  * Created by chigichan24 on 2019-06-21.
@@ -71,8 +74,14 @@ class PatternRepository @Inject constructor(
   suspend fun register(pattern: PatternWithColor): Int {
     val matrix = pattern.displayName.map {
       val font = FontSignMatrix.matrixMap.toMutableMap() + FontAlphabetMatrix.matrixMap.toMutableMap() + FontHiraganaMatrix.matrixMap.toMutableMap() + FontKatakanaMatrix.matrixMap.toMutableMap()
-      font[it.toString()]?.mapIndexed {num, index ->
-        num * (pattern.color?.get(index) ?: 0)
+      val a = font[it.toString()]
+      val color = pattern.color?.get(0) ?: 0
+      val R = (color shr 16) and 0xff
+      val G = (color shr 8) and 0xff
+      val B = color and 0xff
+      val s = ((R shl 16) + (G shl 8) + B)
+      a?.map {num ->
+        num * ((R shl 16) + (G shl 8) + B)
       } ?: listOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
           1, 1, 1, 1, 1, 1, 1)

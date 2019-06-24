@@ -77,6 +77,6 @@ class AppModule {
   }
 
   companion object {
-    private const val BASE_URL = "http://192.168.11.136:5000/"
+    private const val BASE_URL = "http://192.168.43.48:5000/"
   }
 }
