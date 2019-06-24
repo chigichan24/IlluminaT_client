@@ -21,6 +21,11 @@ class PatternRepository @Inject constructor(
     return pattern
   }
 
+  suspend fun update(pattern: Pattern): Pattern {
+    patternDao.update(pattern)
+    return pattern
+  }
+
   suspend fun loadCurrentPattern(): Pattern {
     val id = illuminatService.getCurrentPattern().id
     return patternDao.findWithRegisteredId(id)

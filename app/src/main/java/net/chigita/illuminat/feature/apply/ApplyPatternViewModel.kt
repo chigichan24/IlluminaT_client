@@ -11,8 +11,8 @@ import kotlinx.coroutines.withContext
 import net.chigita.illuminat.repository.ColorRepository
 import net.chigita.illuminat.repository.PatternRepository
 import net.chigita.illuminat.util.onError
+import net.chigita.illuminat.vo.Pattern
 import net.chigita.illuminat.vo.PatternWithColor
-import java.lang.Exception
 import javax.inject.Inject
 
 class ApplyPatternViewModel @Inject constructor(
@@ -81,8 +81,19 @@ class ApplyPatternViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         withContext(Dispatchers.IO){
-          val id = patternRepository.registerSample()
-          patternRepository.reflect(id)
+          if (pattern.registeredId == Pattern.UNREGISTERED_ID) {
+            val id = patternRepository.registerSample()
+            patternRepository.update(
+              Pattern(
+                pattern.id,
+                pattern.displayName,
+                id
+              )
+            )
+            patternRepository.reflect(id)
+          } else {
+            patternRepository.reflect(pattern.registeredId)
+          }
         }
       } catch (e: Exception) {
         onError(app.applicationContext, e)

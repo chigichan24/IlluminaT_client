@@ -2,7 +2,7 @@ package net.chigita.illuminat.vo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.UUID
+import java.util.*
 
 @Entity
 data class Pattern(
@@ -11,7 +11,7 @@ data class Pattern(
     val registeredId: Int
 ) {
   companion object {
-    private const val UNREGISTERED_ID = -1
+    const val UNREGISTERED_ID = -1
     fun new(
         displayString: String,
         registeredId: Int? = null
