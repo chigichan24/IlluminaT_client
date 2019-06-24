@@ -1,5 +1,6 @@
 package net.chigita.illuminat.feature.apply
 
+import android.graphics.drawable.ColorDrawable
 import com.xwray.groupie.databinding.BindableItem
 import net.chigita.illuminat.R
 import net.chigita.illuminat.databinding.ItemPatternBinding
@@ -14,6 +15,7 @@ class PatternItem(
 
   override fun bind(viewBinding: ItemPatternBinding, position: Int) {
     viewBinding.text.text = pattern.displayName
+    viewBinding.colorTile.background = ColorDrawable(pattern.color?.get(0) ?: 0)
     viewBinding.cardView.setOnClickListener {
       onPatternItemClickListener.onClick(pattern)
     }
