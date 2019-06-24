@@ -3,8 +3,10 @@ package net.chigita.illuminat.feature.apply
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +25,11 @@ class ApplyPatternFragment : Fragment(), Injectable {
   private lateinit var binding: FragmentApplyPatternBinding
   @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
   lateinit var applyPatternViewModel: ApplyPatternViewModel
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setHasOptionsMenu(true)
+  }
 
   override fun onCreateView(
       inflater: LayoutInflater,
@@ -44,6 +51,16 @@ class ApplyPatternFragment : Fragment(), Injectable {
         .get(ApplyPatternViewModel::class.java)
     applyPatternViewModel.getPatterns()
     applyPatternViewModel.getCurrentPattern()
+    binding.toolbar.inflateMenu(R.menu.menu_fragment_stop)
+    binding.toolbar.setOnMenuItemClickListener(object : Toolbar.OnMenuItemClickListener {
+      override fun onMenuItemClick(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.menu_stop) {
+          applyPatternViewModel.stopPattern()
+          return true
+        }
+        return false
+      }
+    })
     binding.recyclerView.adapter = GroupAdapter<ViewHolder>().apply {
       add(
           PatternsSection(

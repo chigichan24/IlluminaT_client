@@ -100,4 +100,16 @@ class ApplyPatternViewModel @Inject constructor(
       }
     }
   }
+
+  fun stopPattern() {
+    viewModelScope.launch {
+      try {
+        withContext(Dispatchers.IO) {
+          patternRepository.stop()
+        }
+      } catch (e: Exception) {
+        onError(app.applicationContext, e)
+      }
+    }
+  }
 }

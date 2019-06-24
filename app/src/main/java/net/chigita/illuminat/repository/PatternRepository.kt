@@ -59,4 +59,8 @@ class PatternRepository @Inject constructor(
     val ret = illuminatService.registerPattern(PatternRequest(sample))
     return ret.id
   }
+
+  suspend fun stop() {
+    illuminatService.playPattern(IdRequest(0))
+  }
 }

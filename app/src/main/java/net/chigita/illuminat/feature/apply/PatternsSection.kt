@@ -1,6 +1,7 @@
 package net.chigita.illuminat.feature.apply
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.xwray.groupie.Group
 import com.xwray.groupie.Section
@@ -25,6 +26,7 @@ class PatternsSection(
       reload()
     }
     applyPatternViewModel.currentPatternLiveData.changed(lifecycleOwner) {
+      Log.d("debug", it.toString())
       reload()
     }
   }
