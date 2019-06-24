@@ -71,9 +71,8 @@ class PatternRepository @Inject constructor(
   suspend fun register(pattern: PatternWithColor): Int {
     val matrix = pattern.displayName.map {
       val font = FontSignMatrix.matrixMap.toMutableMap() + FontAlphabetMatrix.matrixMap.toMutableMap() + FontHiraganaMatrix.matrixMap.toMutableMap() + FontKatakanaMatrix.matrixMap.toMutableMap()
-      font[it.toString()]?.map {
-        it * (((pattern.color?.get(0) ?: 0) shl 16) + ((pattern.color?.get(1)
-            ?: 0) shl 8) + (pattern.color?.get(2) ?: 0))
+      font[it.toString()]?.mapIndexed {num, index ->
+        num * (pattern.color?.get(index) ?: 0)
       } ?: listOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
           1, 1, 1, 1, 1, 1, 1)
