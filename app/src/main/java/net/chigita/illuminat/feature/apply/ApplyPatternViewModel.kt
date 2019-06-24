@@ -85,7 +85,7 @@ class ApplyPatternViewModel @Inject constructor(
       try {
         withContext(Dispatchers.IO){
           if (pattern.registeredId == Pattern.UNREGISTERED_ID) {
-            val id = patternRepository.registerSample()
+            val id = patternRepository.register(pattern)
             patternRepository.update(
               Pattern(
                 pattern.id,
