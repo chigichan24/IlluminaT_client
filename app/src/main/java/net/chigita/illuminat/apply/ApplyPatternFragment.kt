@@ -2,6 +2,7 @@ package net.chigita.illuminat.apply
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +57,10 @@ class ApplyPatternFragment : Fragment(), Injectable {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.confirmation)
                 .setMessage(R.string.apply_pattern_message)
-                .setPositiveButton(R.string.ok, null)
+                .setPositiveButton(R.string.ok
+                ) { _, _ ->
+                  applyPatternViewModel.applyPattern(it)
+                }
                 .setNegativeButton(R.string.cancel, null)
                 .show()
           }

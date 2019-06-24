@@ -76,4 +76,17 @@ class ApplyPatternViewModel @Inject constructor(
       }
     }
   }
+
+  fun applyPattern(pattern: PatternWithColor) {
+    viewModelScope.launch {
+      try {
+        withContext(Dispatchers.IO){
+          val id = patternRepository.registerSample()
+          patternRepository.reflect(id)
+        }
+      } catch (e: Exception) {
+        onError(app.applicationContext, e)
+      }
+    }
+  }
 }
