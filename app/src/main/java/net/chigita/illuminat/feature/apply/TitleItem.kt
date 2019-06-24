@@ -1,4 +1,4 @@
-package net.chigita.illuminat.apply
+package net.chigita.illuminat.feature.apply
 
 import com.xwray.groupie.databinding.BindableItem
 import net.chigita.illuminat.R

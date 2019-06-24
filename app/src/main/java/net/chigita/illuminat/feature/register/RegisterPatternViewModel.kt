@@ -1,4 +1,4 @@
-package net.chigita.illuminat.register
+package net.chigita.illuminat.feature.register
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

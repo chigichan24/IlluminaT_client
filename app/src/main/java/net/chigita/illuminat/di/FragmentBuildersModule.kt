@@ -2,9 +2,9 @@ package net.chigita.illuminat.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.chigita.illuminat.apply.ApplyPatternFragment
-import net.chigita.illuminat.home.HomeFragment
-import net.chigita.illuminat.register.RegisterPatternFragment
+import net.chigita.illuminat.feature.apply.ApplyPatternFragment
+import net.chigita.illuminat.feature.home.HomeFragment
+import net.chigita.illuminat.feature.register.RegisterPatternFragment
 
 /**
  * Created by chigichan24 on 2019-06-12.

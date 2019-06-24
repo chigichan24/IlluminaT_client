@@ -1,4 +1,4 @@
-package net.chigita.illuminat.register
+package net.chigita.illuminat.feature.register
 
 import android.os.Bundle
 import android.view.LayoutInflater

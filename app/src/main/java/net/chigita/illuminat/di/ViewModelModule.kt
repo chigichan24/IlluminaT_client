@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import net.chigita.illuminat.apply.ApplyPatternViewModel
-import net.chigita.illuminat.register.RegisterPatternViewModel
+import net.chigita.illuminat.feature.apply.ApplyPatternViewModel
+import net.chigita.illuminat.feature.register.RegisterPatternViewModel
 
 /**
  * Created by chigichan24 on 2019-06-12.

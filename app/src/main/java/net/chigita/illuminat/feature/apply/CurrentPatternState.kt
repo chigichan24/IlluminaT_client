@@ -1,4 +1,4 @@
-package net.chigita.illuminat.apply
+package net.chigita.illuminat.feature.apply
 
 enum class CurrentPatternState {
   INITIALIZED,

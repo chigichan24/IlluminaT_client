@@ -1,4 +1,4 @@
-package net.chigita.illuminat.apply
+package net.chigita.illuminat.feature.apply
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner

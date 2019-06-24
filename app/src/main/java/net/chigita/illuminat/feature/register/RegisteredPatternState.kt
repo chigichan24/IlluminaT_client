@@ -1,4 +1,4 @@
-package net.chigita.illuminat.register
+package net.chigita.illuminat.feature.register
 
 /**
  * Created by chigichan24 on 2019-06-21.

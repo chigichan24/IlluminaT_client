@@ -1,4 +1,4 @@
-package net.chigita.illuminat.home
+package net.chigita.illuminat.feature.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
