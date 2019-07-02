@@ -28,6 +28,7 @@ This project got 3rd prize in competition at an embedded system development clas
   - view <-> viewmodel : Using LiveData to observe and notify some data
   - viewmodel <-> repository : Kotlin Coroutines
   - repository <-> Room, Api : Kotlin Corotuines
-  
+<img src="https://user-images.githubusercontent.com/7840108/60501322-cacf9380-9cf6-11e9-8112-e1cc0aa22299.png" width=500 />  
+
 ## Author
 - [Kazuki Chigita](https://github.com/chigichan24)
