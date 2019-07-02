@@ -21,7 +21,8 @@ This project got 3rd prize in competition at an embedded system development clas
 - Retrofit
 - OkHttp
 - Moshi
-- and some great libs
+- lottie
+- and some great libraries
 
 ### Architecture
 - MVVM with Navigation
