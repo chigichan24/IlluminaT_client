@@ -3,7 +3,7 @@ client app for IlluminaT project. Team: 縦割りプログラマ(Divided vertica
 
 ## What is the IlluminaT?
 
-IlluminaT is a project for developing controllable brooch with T-shirt. The brooch is consists from LED-Matrix. The  brooch  can display alphabet, katakana, hiragana and some signs, which can controll from Android.
+IlluminaT is a project for developing controllable brooch with T-shirt. The brooch is consists from LED-Matrix. It can display alphabet, katakana, hiragana and some signs, which can controll from Android.
 
 This Repository manage only Android app source code. [HERE](https://github.com/NTSC-J/IlluminaT_controller) is a server program.
 
